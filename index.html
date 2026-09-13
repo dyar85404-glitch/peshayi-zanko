@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ckb" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سیستەمی وەرگرتنی پۆلی ١٢ی پیشەیی | DEA.JEVARA</title>
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: Vazirmatn, Tahoma, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-color: #0f172a;
+            color: #f8fafc;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            border-bottom: 2px solid #3b82f6;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+        .logo-title {
+            font-size: 26px;
+            font-weight: bold;
+            color: #60a5fa;
+            letter-spacing: 1px;
+        }
+        .sub-title {
+            color: #94a3b8;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        .container {
+            max-width: 650px;
+            width: 90%;
+            margin: 30px auto;
+            background: #1e293b;
+            padding: 25px;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            border: 1px solid #334155;
+            flex: 1;
+        }
+        label {
+            font-weight: 600;
+            display: block;
+            margin-top: 18px;
+            color: #cbd5e1;
+            font-size: 15px;
+        }
+        select, input, button {
+            width: 100%;
+            padding: 14px;
+            margin-top: 8px;
+            border-radius: 10px;
+            border: 1px solid #475569;
+            background-color: #0f172a;
+            color: #fff;
+            font-size: 15px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+        select:focus, input:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 8px rgba(59, 130, 246, 0.4);
+        }
+        button {
+            background: linear-gradient(90deg, #2563eb, #1d4ed8);
+            color: white;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            margin-top: 25px;
+            font-size: 16px;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+        button:hover {
+            background: linear-gradient(90deg, #1d4ed8, #1e40af);
+        }
+        .result-card {
+            background: #0f172a;
+            border-right: 4px solid #3b82f6;
+            padding: 16px;
+            margin-top: 15px;
+            border-radius: 8px;
+            border: 1px solid #1e293b;
+        }
+        .result-card h4 {
+            color: #60a5fa;
+            font-size: 17px;
+            margin-bottom: 6px;
+        }
+        .result-card p {
+            color: #94a3b8;
+            font-size: 14px;
+            margin: 3px 0;
+        }
+        footer {
+            background-color: #0b0f19;
+            text-align: center;
+            padding: 20px;
+            color: #64748b;
+            font-size: 13px;
+            border-top: 1px solid #1e293b;
+            margin-top: auto;
+        }
+        footer span {
+            color: #3b82f6;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-title">DEA.JEVARA</div>
+        <div class="sub-title">ئەم سایتە دروست کراوە بۆ پۆلی ١٢ی پیشەیی</div>
+    </header>
+
+    <div class="container">
+        <label for="dept">بەشەکەت لە پۆلی ١٢ی پیشەیی هەڵبژێرە:</label>
+        <select id="dept">
+            <option value="kareba">کارەبا و ئەلیکترۆنیات</option>
+            <option value="makinat">مەکینات / میكانیک</option>
+            <option value="automobil">ئۆتۆمبێل</option>
+            <option value="it">تەکنەلۆجیای زانیاری (IT)</option>
+            <option value="bazorgani">بازرگانی و کارگێڕی</option>
+            <option value="gashtuguzar">گەشتوگوزار و هۆتێلداری</option>
+            <option value="kishtukal">کشتوکاڵ</option>
+            <option value="binasazi">بیناسازی و تەلارسازی</option>
+            <option value="taqnayat">تەکنەلۆژیا و بەرهەمهێنان</option>
+        </select>
+
+        <label for="city">پارێزگای خوازراو هەڵبژێرە:</label>
+        <select id="city">
+            <option value="all">هەموو پارێزگاکان</option>
+            <option value="erbil">هەولێر</option>
+            <option value="sulaymaniyah">سلێمانی</option>
+            <option value="duhok">دهۆک</option>
+            <option value="halabja">هەڵەبجە</option>
+            <option value="kirkuk">کەرکووک</option>
+            <option value="garmyan">گەرمیان</option>
+        </select>
+
+        <label for="score">کۆی نمرەکەت بنووسە:</label>
+        <input type="number" id="score" placeholder="نموونە: 75.5" step="0.1">
+
+        <button onclick="checkAdmission()">پشکنینی بەش و پەیمانگاکان</button>
+
+        <div id="results"></div>
+    </div>
+
+    <footer>
+        دروست کراوە لە لایەن <span>(دیار سەباح) DEA.JEVARA</span><br>
+        مافەکە پارێزراوە لەلایەن <span>DEA.JEVARA</span>
+    </footer>
+
+<script>
+const zankoData = [
+    { dept: "kareba", city: "erbil", name: "پەیمانگەی تەکنیکی هەولێر", deptName: "تەکنەلۆجیای کارەبا", minScore: 70.0 },
+    { dept: "kareba", city: "sulaymaniyah", name: "پەیمانگەی تەکنیکی سلێمانی", deptName: "کارەبا", minScore: 68.5 },
+    { dept: "kareba", city: "duhok", name: "پەیمانگەی تەکنیکی دهۆک", deptName: "کارەبا", minScore: 67.0 },
+    { dept: "kareba", city: "halabja", name: "پەیمانگەی تەکنیکی هەڵەبجە", deptName: "کارەبا", minScore: 65.0 },
+    { dept: "kareba", city: "kirkuk", name: "پەیمانگەی تەکنیکی کەرکووک", deptName: "کارەبا", minScore: 66.0 },
+
+    { dept: "it", city: "erbil", name: "پەیمانگەی تەکنیکی هەولێر", deptName: "IT", minScore: 80.0 },
+    { dept: "it", city: "sulaymaniyah", name: "پەیمانگەی تەکنیکی سلێمانی", deptName: "تەکنەلۆجیای زانیاری", minScore: 78.5 },
+    { dept: "it", city: "duhok", name: "پەیمانگەی تەکنیکی دهۆک", deptName: "IT", minScore: 76.0 },
+    { dept: "it", city: "garmyan", name: "پەیمانگەی تەکنیکی کەلار", deptName: "تەکنەلۆجیای زانیاری", minScore: 72.0 },
+
+    { dept: "makinat", city: "sulaymaniyah", name: "پەیمانگەی تەکنیکی سلێمانی", deptName: "میكانیک", minScore: 65.0 },
+    { dept: "automobil", city: "erbil", name: "پەیمانگەی تەکنیکی هەولێر", deptName: "ئۆتۆمبێل", minScore: 67.0 },
+    { dept: "bazorgani", city: "sulaymaniyah", name: "پەیمانگەی تەکنیکی سلێمانی", deptName: "کارگێڕی کار", minScore: 62.0 },
+    { dept: "gashtuguzar", city: "erbil", name: "پەیمانگەی تەکنیکی هەولێر", deptName: "گەشتوگوزار", minScore: 60.0 }
+];
+
+function checkAdmission() {
+    const selectedDept = document.getElementById('dept').value;
+    const selectedCity = document.getElementById('city').value;
+    const userScore = parseFloat(document.getElementById('score').value);
+    const resultsDiv = document.getElementById('results');
+    
+    resultsDiv.innerHTML = "";
+
+    if (isNaN(userScore) || userScore < 50 || userScore > 100) {
+        resultsDiv.innerHTML = "<p style='color:#f87171; text-align:center; margin-top:15px;'>تکایە نمرەیەکی دروست لە نێوان ٥٠ بۆ ١٠٠ بنووسە.</p>";
+        return;
+    }
+
+    const matched = zankoData.filter(item => {
+        const deptMatch = item.dept === selectedDept;
+        const cityMatch = selectedCity === "all" || item.city === selectedCity;
+        return deptMatch && cityMatch && userScore >= item.minScore;
+    });
+
+    if (matched.length === 0) {
+        resultsDiv.innerHTML = "<p style='text-align:center; color:#94a3b8; margin-top:20px;'>بەداخەوە، بەپێی ئەم نمرەیە و ئەم پارێزگایە هیچ بەشێک نەدۆزرایەوە.</p>";
+    } else {
+        matched.forEach(item => {
+            resultsDiv.innerHTML += `
+                <div class="result-card">
+                    <h4>${item.name}</h4>
+                    <p>بەش: <strong>${item.deptName}</strong></p>
+                    <p>کەمترین نمرەی پێویست: <strong>${item.minScore}</strong></p>
+                </div>
+            `;
+        });
+    }
+}
+</script>
+
+</body>
+</html>
